@@ -15,10 +15,11 @@ function App() {
       <p>hola</p>
       <Routes>
         <Route>
-          <Route path="" element={""} component={""} />
-          <Route path="" element={""} component={""} />
-          <Route path="" element={""} component={""} />
-          <Route path="" element={""} component={""} />
+          <Route path="/todolist" element={""} component={""} />
+          <Route path="/categories" element={""} component={""} />
+          <Route path="/login" element={""} component={""} />
+          <Route path="/signup" element={""} component={""} />
+          <Route path="/" element={""} component={""} />
         </Route>
       </Routes>
       <Outlet />
