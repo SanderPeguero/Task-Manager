@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import Navbar from './layout/Navbar'
 import { Outlet, Route, Routes } from 'react-router-dom'
 function App() {
