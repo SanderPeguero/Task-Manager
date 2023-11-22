@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useContext } from 'react';
 import YourComponent from './Form'
+import { Context } from '../Context'
 
 const task = [
     {
@@ -68,12 +70,16 @@ const task = [
 
 const ToDoList = () => {
 
-    const AddToDoHandler = () => {
+    const [openModal, setOpenModal] = useState(false);
+    const {ToDo, setToDo} = useContext(Context)
 
+
+    const AddToDoHandler = () => {
+  
     }
 
     const EditToDoHandler = () => {
-
+     
     }
 
     const DeleteToDoHandler = () => {
@@ -99,10 +105,11 @@ const ToDoList = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                        <button class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Add To Do</button>
+                    <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                        <button className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Add To Do</button>
                     </div>
                 </div>
+             
                 {/* Search */}
                 <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <table className="min-w-full">
@@ -153,7 +160,7 @@ const ToDoList = () => {
                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">{task.notes}</td>
                                     <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.responsible}</td>
                                     <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                                        <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
+                                        <button  onClick={() => setToDo(task)} className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View Details</button>
                                     </td>
                                 </tr>
                             ))}
