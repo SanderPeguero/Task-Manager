@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Navbar = ({openmodal,setOpenmodal}) => {
+const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
 
