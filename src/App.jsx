@@ -4,8 +4,7 @@ import { Outlet, Route, Routes } from 'react-router-dom'
 import YourComponent from './layout/Form'
 function App() {
 
-  const [ToDo, setToDo] = useState("")
-
+  const [openmodal, setOpenmodal] = useState(true)
 
   return (
     <>
