@@ -14,7 +14,7 @@ function App() {
         <Navbar openmodal={openmodal} setOpenmodal={setOpenmodal}></Navbar>
       </header>
       <p>hola</p>
-      <YourComponent openmodal={openmodal} setOpenmodal={setOpenmodal}></YourComponent>
+    
       <Routes>
         <Route>
           <Route path="/todolist" element={<ToDoList/>} component={""} />
