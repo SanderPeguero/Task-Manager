@@ -5,10 +5,10 @@ const YourComponent = ({openmodal,setOpenmodal}) => {
        e.stopPropagation();
     }
    
-    if(openmodal){
+   if(!openmodal){
     return (
         
-        <div className="flex flex-col justify-center mt-12 overflow-hidden" onClick={() => setOpenmodal(false)}>
+        <div className="flex flex-col justify-center mt-12 overflow-hidden" onClick={() => setOpenmodal(true)}>
             <div className="relative py-3" >
                 <div className="relative px-4 py-8 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-8" >
                     <div className="max-w-md mx-auto" onClick={STOP}>
@@ -53,7 +53,7 @@ const YourComponent = ({openmodal,setOpenmodal}) => {
                             </div>
                             <div className="pt-4 flex items-center space-x-4">
                                 <button className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
-                                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Cancel
+                                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth ="2" d="M6 18L18 6M6 6l12 12"></path></svg> Cancel
                                 </button>
                                 <button className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Create</button>
                             </div>
@@ -64,7 +64,8 @@ const YourComponent = ({openmodal,setOpenmodal}) => {
         </div>
       
     );
-    }
+   }
+    
 };
 
 export default YourComponent;
