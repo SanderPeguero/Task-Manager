@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import { useContext } from 'react';
+import React, { useState } from 'react';
 import YourComponent from './Form'
 import { Context } from '../Context'
 
@@ -69,9 +68,8 @@ const task = [
 
 
 const ToDoList = () => {
-
-    const [openModal, setOpenModal] = useState(false);
-    const {ToDo, setToDo} = useContext(Context)
+    const [openmodal, setOpenmodal] = useState(true)
+    const AddToDoHandler = () => {
 
 
     const AddToDoHandler = () => {
@@ -86,6 +84,8 @@ const ToDoList = () => {
 
     }
     return (
+        <>  <YourComponent openmodal={openmodal} setOpenmodal={setOpenmodal}></YourComponent>
+        
         <div className='mt-[3.5rem]'>
             <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
                 {/* Search */}
@@ -106,7 +106,7 @@ const ToDoList = () => {
                         </div>
                     </div>
                     <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                        <button className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Add To Do</button>
+                        <button  onClick={() => !openmodal? setOpenmodal(true):setOpenmodal(false)} className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Add To Do</button>
                     </div>
                 </div>
              
@@ -214,7 +214,9 @@ const ToDoList = () => {
                 </div>
             </div>
         </div>
+        </>
     )
+}
 }
 
 export default ToDoList
