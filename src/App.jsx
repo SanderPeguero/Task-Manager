@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import Navbar from './layout/Navbar'
 import { Outlet, Route, Routes } from 'react-router-dom'
+import ToDoList from './layout/ToDoList'
+import YourComponent from './layout/Form'
 function App() {
-
-
+  const [openmodal, setOpenmodal] = useState(false)
+  console.log("hola ",openmodal)
   return (
     <>
+     
       <header>
-        <Navbar></Navbar>
+        <Navbar openmodal={openmodal} setOpenmodal={setOpenmodal}></Navbar>
       </header>
       <p>hola</p>
+      <YourComponent openmodal={openmodal} setOpenmodal={setOpenmodal}></YourComponent>
       <Routes>
         <Route>
           <Route path="/todolist" element={""} component={""} />
