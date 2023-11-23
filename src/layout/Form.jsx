@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Context } from '../Context';
+import { useAuth } from '../Context';
 import { useEffect } from 'react';
 
 
@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 
 const YourComponent = ({ openmodal, setOpenmodal }) => {
-    const { ToDo, setToDo, ToDoEdit, CategoryPre } = useContext(Context)
+    const { ToDo, setToDo, ToDoEdit, CategoryPre } = useAuth()
     const [Id, setId] = useState(6)
     const [Title, setTitle] = useState("")
     const [category, setcategory] = useState("")

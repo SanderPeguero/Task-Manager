@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Context } from '../Context';
+import { useAuth } from '../Context';
 import { useEffect } from 'react';
 
 const ToDoItem = ({ datos, openmodal, setOpenmodal }) => {
-    const { ToDo, setToDo, ToDoEdit, task, CategoryPre } = useContext(Context)
+    const { ToDo, setToDo, ToDoEdit, task, CategoryPre } = useAuth()
     const [showCategories, setshowCategories] = useState(false)
 
     const toggleCategoryView = () => {
