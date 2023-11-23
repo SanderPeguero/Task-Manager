@@ -109,7 +109,7 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
             <div className='absolute inset-0 flex items-center justify-center z-50' onClick={() => setOpenmodal(true)}>
                 <div className="flex flex-col justify-center mt-12 overflow-hidden" onClick={STOP} >
                     <div className="relative py-3" >
-                        <div className="relative px-4 py-8 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-8" >
+                        <div className="relative px-4 py-8 bg-white mx-8 md:mx-0 shadow border border-black p-4 rounded-3xl sm:p-8" >
                             <div className="max-w-md mx-auto" >
                                 <div className="flex items-center space-x-5">
                                     <div className="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono">i</div>
@@ -131,23 +131,33 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
                                                 <label className="leading-loose">Event Subtitle</label>
                                                 <input value={Priority} onChange={(e) => setPriority(e.target.value)} type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="Optional" />
                                             </div>
-                                            <div className="flex items-center space-x-4">
-                                                <div className="flex flex-col">
-                                                    <label className="leading-loose">Start</label>
-                                                    <div className="relative focus-within:text-gray-600 text-gray-400">
-                                                        <input value={ExpiratioDate} onChange={(e) => setExpiratioDate(e.target.value)} type="date"
-                                                            aria-label="Fecha" className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="25/02/2020" />
-                                                    </div>
-                                                </div>
-                                                <div className="flex flex-col">
-                                                    <label className="leading-loose">End</label>
-                                                    <div className="relative focus-within:text-gray-600 text-gray-400">
-                                                        <input type="date"
-                                                            aria-label="Fecha" className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="26/02/2020" />
+                                            <div className="flex flex-col sm:flex-row items-center sm:space-x-4">
+  <div className="flex flex-col mb-4 sm:mb-0">
+    <label className="leading-loose">Start</label>
+    <div className="relative focus-within:text-gray-600 text-gray-400">
+      <input
+        value={ExpiratioDate}
+        onChange={(e) => setExpiratioDate(e.target.value)}
+        type="date"
+        aria-label="Fecha"
+        className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:w-40 sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white"
+        placeholder="25/02/2020"
+      />
+    </div>
+  </div>
+  <div className="flex flex-col">
+    <label className="leading-loose">End</label>
+    <div className="relative focus-within:text-gray-600 text-gray-400">
+      <input
+        type="date"
+        aria-label="Fecha"
+        className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:w-40 sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white"
+        placeholder="26/02/2020"
+      />
+    </div>
+  </div>
+</div>
 
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div className="flex flex-col">
                                                 <label className="leading-loose">Event Description</label>
                                                 <input value={Description} onChange={(e) => setDescription(e.target.value)} type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="Optional" />

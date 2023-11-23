@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-white">
+    <div className="fixed top-0 left-0 w-full bg-white z-50">
       <div className="antialiased bg-gray-100 dark-mode:bg-gray-900">
         <div className="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
           <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
