@@ -69,6 +69,36 @@ const task = [
   },
 ]
 
+const CategoryList = [
+  {
+      id: 1,
+      name: "Work",
+      color: '#FFD700'
+  },
+  {
+      id: 2,
+      name: "Personal",
+      color: '#00CED1'
+  },
+  {
+      id: 3,
+      name: "Study",
+      color: '#FF6347'
+  },
+  {
+      id: 4,
+      name: "Health",
+      color: '#20B2AA'
+  },
+
+  {
+      id: 5,
+      name: ""
+  }
+
+]
+
+
 
 function App() {
 
@@ -76,9 +106,11 @@ function App() {
   const [ToDo, setToDo] = useState([])
   const [ToDoEdit, setToDoEdit] = useState({})
   const [ToDoDeleted, setToDoDeleted] = useState({})
+  const [CategoryPre, setCategoryPre] = useState([])
 
   useEffect(() => {
     setToDo(task)
+    setCategoryPre(CategoryList)
     console.log("App")
     console.log(ToDo)
   }, [])
@@ -86,7 +118,7 @@ function App() {
 
   return (
     <>
-     <Context.Provider value={{ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted}}>
+     <Context.Provider value={{ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre}}>
    
       <header>
         <Navbar openmodal={openmodal} setOpenmodal={setOpenmodal}></Navbar>
