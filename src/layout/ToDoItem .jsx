@@ -5,13 +5,6 @@ import { useEffect } from 'react';
 const ToDoItem = ({ datos, openmodal, setOpenmodal }) => {
     const { ToDo, setToDo, ToDoEdit, task, CategoryPre } = useContext(Context)
     const [showCategories, setshowCategories] = useState(false)
-    const categoryColors = {
-        Work: '#FFD700',
-        Personal: '#00CED1',
-        Study: '#FF6347',
-        Health: '#20B2AA'
-
-    };
 
     const toggleCategoryView = () => {
         setshowCategories(!showCategories);
