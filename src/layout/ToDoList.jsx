@@ -26,6 +26,21 @@ const ToDoList = () => {
         const updatedTasks = ToDo.filter(task => task.id !== Id);
         setToDo(updatedTasks);
     }
+
+    const sortByPriority = (tasks) => {
+        return tasks.sort((a, b) => {
+        
+            const priorityOrder = {
+                Low: 3,
+                Medium: 2,
+                High: 1,
+            };
+
+            return priorityOrder[a.priority] - priorityOrder[b.priority];
+        });
+    };
+    const sortedTasks = sortByPriority(ToDo);
+
     return (
         <>  <YourComponent openmodal={openmodal} setOpenmodal={setOpenmodal}></YourComponent>
 
@@ -76,7 +91,7 @@ const ToDoList = () => {
                             </thead>
 
                             <tbody className="bg-white">
-                                {ToDo.map((task, index) => (
+                                {sortedTasks.map((task, index) => (
                                     <tr key={index}>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                                             <div className="flex items-center">
