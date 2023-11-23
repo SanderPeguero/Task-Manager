@@ -41,12 +41,25 @@ const ToDoList = () => {
     };
     const sortedTasks = sortByPriority(ToDo);
 
+    const getColorByPriority = (priority) => {
+        switch (priority) {
+            case 'High':
+                return 'absolute inset-0 rounded-full bg-red-400';
+            case 'Medium':
+                return 'absolute inset-0 rounded-full bg-orange-400';
+            case 'Low':
+                return 'absolute inset-0 rounded-full bg-green-400';
+            default:
+                return '';
+        }
+    }
+
     return (
         <>  <YourComponent openmodal={openmodal} setOpenmodal={setOpenmodal}></YourComponent>
 
             <ToDoItem datos={datos} openmodal={openmodal2} setOpenmodal={setOpenmodal2}></ToDoItem>
 
-            <div className='mt-[3.5rem]'>
+            <div className='mt-[3.5rem] '>
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
                     <div className="rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
                         <div className="flex justify-between items-center">
@@ -105,7 +118,12 @@ const ToDoList = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.description}</td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.category}</td>
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.priority}</td>
+                                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
+                                            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                                <span aria-hidden className={` ${getColorByPriority(task.priority)}`}></span>
+                                                <span className="relative text-xs">{task.priority}</span>
+                                            </span>
+                                        </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.expirationdate}</td>
 
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
