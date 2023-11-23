@@ -2,11 +2,39 @@ import React, { useState, useContext } from 'react';
 import { Context } from '../Context';
 import { useEffect } from 'react';
 
+
+const CategoryList = [
+    {
+        id: 1,
+        name: "Work"
+    },
+    {
+        id: 2,
+        name: "Personal"
+    },
+    {
+        id: 3,
+        name: "Study"
+    },
+    {
+        id: 4,
+        name: "Health"
+    },
+
+    {
+        id: 5,
+        name: ""
+    }
+
+]
+
+
+
 const YourComponent = ({ openmodal, setOpenmodal }) => {
-    const {ToDo, setToDo, ToDoEdit, task } = useContext(Context)
+    const { ToDo, setToDo, ToDoEdit } = useContext(Context)
     const [Id, setId] = useState(6)
     const [Title, setTitle] = useState("")
-    const [Category, setCategory] = useState("")
+    const [category, setcategory] = useState("")
     const [Description, setDescription] = useState("")
     const [Priority, setPriority] = useState("")
     const [ExpiratioDate, setExpiratioDate] = useState("")
@@ -28,12 +56,12 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
 
     const AddToDoHandler = (e) => {
         e.preventDefault();
-       const newTask = {
+        const newTask = {
             ...FormToDo,
             id: Id,
             title: Title,
             description: Description,
-            category: Category,
+            category: category,
             priority: Priority,
             expirationdate: ExpiratioDate,
             status: "Pending",
@@ -46,14 +74,30 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
 
         setToDo([...ToDo, FormToDo])
         setId(Id + 1)
-        
-    
+
+
+    }
+
+    const CreateCategoryHandler = () => {
+
+    }
+
+    const ReadCategoryHandler = () => {
+
+    }
+
+    const UpdateCategoryHandler = () => {
+
+    }
+
+    const DeleteCategoryHandler = () => {
+
     }
 
     useEffect(() => {
         setTitle(ToDoEdit.title)
     }, [ToDoEdit])
-    
+
 
 
     const STOP = (e) => {
@@ -85,7 +129,7 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
                                             </div>
                                             <div className="flex flex-col">
                                                 <label className="leading-loose">Event Subtitle</label>
-                                                <input value={Category} onChange={(e) => setCategory(e.target.value)} type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="Optional" />
+                                                <input value={Priority} onChange={(e) => setPriority(e.target.value)} type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="Optional" />
                                             </div>
                                             <div className="flex items-center space-x-4">
                                                 <div className="flex flex-col">
@@ -107,6 +151,25 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
                                             <div className="flex flex-col">
                                                 <label className="leading-loose">Event Description</label>
                                                 <input value={Description} onChange={(e) => setDescription(e.target.value)} type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="Optional" />
+                                            </div>
+                                            {/* Category Select */}
+                                            <div>
+                                                <div className="md:col-span-2">
+                                                    <label htmlFor="subject" className="leading-loose">Category</label>
+                                                    <select
+                                                        id="subject"
+                                                        name="subject"
+                                                        className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700"
+                                                        >
+                                                        <option value="" disabled >Select a category</option>
+                                                        {
+                                                            CategoryList.map((cate, index) => (
+                                                                <option key={index} value={cate.name}>{cate.name}</option>
+                                                            ))
+                                                        }
+
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="pt-4 flex items-center space-x-4">
