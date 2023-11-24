@@ -181,7 +181,7 @@ export function AuthProvider({ children }) {
 
   return (
     <Context.Provider
-      value={{ login, logout, authToken, ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre }}
+      value={{ login, logout, authToken, ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre, PriorityList }}
     >
       {children}
     </Context.Provider>
