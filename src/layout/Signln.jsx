@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-
+import { useAuth } from '../Context';
 const Signln = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const { signup } = useAuth();
+    // const handleEmailChange = (e) => {
+    //     setEmail(e.target.value);
+    //     console.log(email)
+    // };
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-        console.log(email)
-    };
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-        console.log(password)
-    };
-    const signInHandler = () => {
+    // const handlePasswordChange = (e) => {
+    //     setPassword(e.target.value);
+    //     console.log(password)
+    // };
+    const signInHandler = (e) => {
+        e.preventDefault();
+        signup(email,password);
+         
+        
         
     };
+    
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
@@ -36,14 +41,14 @@ const Signln = () => {
                         <input
                             type="text"
                             value={email}
-                            onChange={handleEmailChange}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                         />
                         <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
                         <input
                             type="password"
                             value={password}
-                            onChange={handlePasswordChange}
+                            onChange={(e) => setPassword(e.target.value)}
                             className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                         />
                         <label className="font-semibold text-sm text-gray-600 pb-1 block">Confirm Password</label>
