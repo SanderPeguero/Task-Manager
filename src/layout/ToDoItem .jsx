@@ -53,6 +53,10 @@ const ToDoItem = ({ datos, openmodal, setOpenmodal }) => {
                                                 <label className="leading-loose">Description: {datos.description}</label>
                                             </div>
                                             <div className="flex flex-col">
+                                                <label className={`${datos.priority == "High" ? "font-semibold text-red-500 leading-tight" : datos.priority == "Medium" ?"font-semibold text-orange-500 leading-tight":"font-semibold text-green-500 leading-tight"}`}>Priority: {datos.priority}</label>
+                                                
+                                            </div>
+                                            <div className="flex flex-col">
                                                 <label className="leading-loose">Category:</label>
                                                 {CategoryPre[datos.category] ? (
                                                     <button onClick={toggleCategoryView} className="inline-block px-3 py-1 rounded-md text-white font-semibold" style={{ backgroundColor: CategoryPre[datos.category].color }}>

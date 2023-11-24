@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 
 
 
-const YourComponent = ({ openmodal, setOpenmodal }) => {
-    const { ToDo, setToDo, ToDoEdit, CategoryPre } = useAuth()
+const AddToDo = ({ openmodal, setOpenmodal }) => {
+    const { ToDo, setToDo, ToDoEdit, CategoryPre,PriorityList  } = useAuth()
     const [Id, setId] = useState(6)
     const [Title, setTitle] = useState("")
     const [category, setcategory] = useState("")
@@ -145,6 +145,22 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
                                                 <label className="leading-loose">Event Description</label>
                                                 <input value={Description} onChange={(e) => setDescription(e.target.value)} type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600 bg-white" placeholder="Optional" />
                                             </div>
+                                            <div className="md:col-span-2">
+                                                <label htmlFor="subject" className="leading-loose">Priority</label>
+                                                <select
+                                                    id="subject"
+                                                    name="subject"
+                                                    className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700"
+                                                >
+                                                    <option value="" disabled >Select a Priority</option>
+                                                    {
+                                                        PriorityList.map((cate, index) => (
+                                                            <option key={index} value={cate.name}>{cate.name}</option>
+                                                        ))
+                                                    }
+
+                                                </select>
+                                            </div>
                                             {/* Category Select */}
                                             <div>
                                                 <div className="md:col-span-2">
@@ -186,4 +202,4 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
 
 };
 
-export default YourComponent;
+export default AddToDo;

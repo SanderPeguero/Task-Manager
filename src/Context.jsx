@@ -103,14 +103,41 @@ const CategoryList = [
   }
 
 ]
+  const PriorityList = [
+    {
+      id: 1,
+      name: "Heigh",
+      color: '#FFD700'
+    },
+    {
+      id: 2,
+      name: "Medium",
+      color: '#00CED1'
+    },
+    {
+      id: 3,
+      name: "Low",
+      color: '#FF6347'
+    },
+   
+
+  
+  ]
 
 
 export function AuthProvider({ children }) {
-  const [authToken, setauthToken] = useState()
-  const [ToDo, setToDo] = useState([])
-  const [ToDoEdit, setToDoEdit] = useState({})
-  const [ToDoDeleted, setToDoDeleted] = useState({})
-  const [CategoryPre, setCategoryPre] = useState([])
+    const [ToDo, setToDo] = useState([])
+    const [ToDoEdit, setToDoEdit] = useState({})
+    const [ToDoDeleted, setToDoDeleted] = useState({})
+    const [CategoryPre, setCategoryPre] = useState([])
+  //  const [Priority, setPriority] = useState([])
+    useEffect(() => {
+      setToDo(task)
+      setCategoryPre(CategoryList)
+      // setPriority()
+      console.log("App")
+      console.log(ToDo)
+    }, [])
 
   useEffect(() => {
     setToDo(task)
