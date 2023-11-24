@@ -126,6 +126,7 @@ const CategoryList = [
 
 
 export function AuthProvider({ children }) {
+  const [authToken, setauthToken] = useState()
     const [ToDo, setToDo] = useState([])
     const [ToDoEdit, setToDoEdit] = useState({})
     const [ToDoDeleted, setToDoDeleted] = useState({})
