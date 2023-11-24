@@ -4,6 +4,7 @@ import AddToDo from './AddToDo'
 import ToDoItem from './ToDoItem ';
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { BiNote } from "react-icons/bi";
 
 
 
@@ -12,6 +13,8 @@ const ToDoList = () => {
     const [openmodal, setOpenmodal] = useState(true)
     const [openmodal2, setOpenmodal2] = useState(true)
     const [datos, setDatos] = useState([])
+    const [isOpen, setIsOpen] = useState(true);
+    const [Details, setDetails] = useState([])
 
     const EditToDoHandler = (task) => {
         console.log("Edit")
@@ -29,7 +32,7 @@ const ToDoList = () => {
 
     const sortByPriority = (tasks) => {
         return tasks.sort((a, b) => {
-        
+
             const priorityOrder = {
                 Low: 3,
                 Medium: 2,
@@ -40,6 +43,8 @@ const ToDoList = () => {
         });
     };
     const sortedTasks = sortByPriority(ToDo);
+
+
 
     const getColorByPriority = (priority) => {
         switch (priority) {
@@ -54,10 +59,19 @@ const ToDoList = () => {
         }
     }
 
+
+
+
+
+
     return (
         <>  <AddToDo openmodal={openmodal} setOpenmodal={setOpenmodal}></AddToDo>
 
             <ToDoItem datos={datos} openmodal={openmodal2} setOpenmodal={setOpenmodal2}></ToDoItem>
+
+            <ToDoDetails Details={Details} isOpen={isOpen} setIsOpen={setIsOpen} setDetails={setDetails}/>
+
+
 
             <div className='mt-[3.5rem] '>
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
@@ -93,8 +107,8 @@ const ToDoList = () => {
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">priority</th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Expiration Date</th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">status</th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">comments</th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">notes</th>
+                                    <th className="px-6 py-3 border-b-2 border-gray-300"></th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">responsibles</th>
 
                                     <th className="px-6 py-3 border-b-2 border-gray-300"></th>
@@ -132,8 +146,20 @@ const ToDoList = () => {
                                                 <span className="relative text-xs">{task.status}</span>
                                             </span>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">{task.comments}</td>
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">{task.notes}</td>
+
+
+                                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">
+                                            {task.notes}
+
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">
+
+                                            <button
+                                                onClick={() => { !isOpen ? setIsOpen(true) : setIsOpen(false), setDetails(task) }}
+                                                className="px-3 py-1 border-black border text-black rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">
+                                                <BiNote size={14} />
+                                            </button>
+                                        </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.responsible}</td>
 
                                         <td className="px-3 py-2 whitespace-no-wrap text-right border-b border-gray-500 text-xs leading-4">

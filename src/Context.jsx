@@ -20,7 +20,7 @@ const task = [
     priority: "High",
     expirationdate: "2023-12-1",
     status: "Pending",
-    comments: [1],
+    comments: [],
     notes: "Be sure to include key statistics.",
     responsible: "Juan"
   },
@@ -45,7 +45,10 @@ const task = [
     priority: "High",
     expirationdate: "2023-12-05",
     status: "In Progress",
-    comments: ["Can efficiency be improved here?"],
+    comments: [
+      "Can efficiency be improved here?",
+      "Yes, it can be improved a lot."
+    ],
     notes: "",
     responsible: "Carlos",
   },

@@ -8,6 +8,7 @@ import Signln from './layout/Signln'
 import { AuthProvider } from './Context'
 import { useAuth } from './Context'
 import Logout from './layout/Logout'
+import ToDoDetails from './components/ToDoDetails'
 
 function App() {
 
@@ -31,7 +32,7 @@ useEffect(() => {
         <Routes>
           <Route>
             <Route path="/" element={<LogIn />} component={""} />
-            <Route path="/signup" element={""} component={""} />
+            <Route path="/signln" element={<Signln />} component={""} />
           </Route>
         </Routes>
       </>
@@ -50,7 +51,7 @@ useEffect(() => {
           <Route>
             <Route path='/logout' element={<Logout />} />
             <Route path="/todolist" element={<ToDoList />} component={""} />
-            <Route path="/categories" element={""} component={""} />
+            <Route path="/categories" element={<ToDoDetails/>} component={""} />
             <Route path="/login" element={<LogIn />} component={""} />
             <Route path="/signln" element={<Signln />} component={""} />
             <Route path="/" element={""} component={""} />
