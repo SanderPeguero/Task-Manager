@@ -101,6 +101,26 @@ const task = [
     }
   
   ]
+  const PriorityList = [
+    {
+      id: 1,
+      name: "Heigh",
+      color: '#FFD700'
+    },
+    {
+      id: 2,
+      name: "Medium",
+      color: '#00CED1'
+    },
+    {
+      id: 3,
+      name: "Low",
+      color: '#FF6347'
+    },
+   
+
+  
+  ]
 
 
 export function AuthProvider({ children }) {
@@ -108,10 +128,11 @@ export function AuthProvider({ children }) {
     const [ToDoEdit, setToDoEdit] = useState({})
     const [ToDoDeleted, setToDoDeleted] = useState({})
     const [CategoryPre, setCategoryPre] = useState([])
-  
+  //  const [Priority, setPriority] = useState([])
     useEffect(() => {
       setToDo(task)
       setCategoryPre(CategoryList)
+      // setPriority()
       console.log("App")
       console.log(ToDo)
     }, [])
@@ -141,7 +162,7 @@ export function AuthProvider({ children }) {
 
     return (
         <Context.Provider
-            value={{ login, logout, ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre }}
+            value={{ login, logout, ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre,PriorityList}}
         >
             {children}
         </Context.Provider>

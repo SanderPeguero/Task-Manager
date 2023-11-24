@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useAuth } from '../Context';
-import YourComponent from './Form'
+import AddToDo from './AddToDo'
 import ToDoItem from './ToDoItem ';
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -55,7 +55,7 @@ const ToDoList = () => {
     }
 
     return (
-        <>  <YourComponent openmodal={openmodal} setOpenmodal={setOpenmodal}></YourComponent>
+        <>  <AddToDo openmodal={openmodal} setOpenmodal={setOpenmodal}></AddToDo>
 
             <ToDoItem datos={datos} openmodal={openmodal2} setOpenmodal={setOpenmodal2}></ToDoItem>
 
