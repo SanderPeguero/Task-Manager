@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useAuth } from '../Context';
 import AddToDo from './AddToDo'
 import ToDoItem from './ToDoItem ';
+import ToDoDetails from '../components/ToDoDetails';
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { BiNote } from "react-icons/bi";
