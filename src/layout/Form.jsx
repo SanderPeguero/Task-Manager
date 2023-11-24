@@ -48,11 +48,16 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
 
         setFormToDo(newTask)
 
-        setToDo([...ToDo, FormToDo])
-        setId(Id + 1)
+     
 
 
     }
+
+    useEffect(() => {
+         setToDo([...ToDo, FormToDo])
+        setId(Id + 1)
+    }, [FormToDo])
+    
 
     const CreateCategoryHandler = () => {
 
@@ -71,8 +76,10 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
     }
 
     useEffect(() => {
-        setTitle(ToDoEdit.title)
-    }, [ToDoEdit])
+        if (ToDoEdit.title) {
+            setTitle(ToDoEdit.title);
+        }
+    }, [ToDoEdit]);
 
 
 
@@ -143,8 +150,10 @@ const YourComponent = ({ openmodal, setOpenmodal }) => {
                                                 <div className="md:col-span-2">
                                                     <label htmlFor="subject" className="leading-loose">Category</label>
                                                     <select
-                                                        id="subject"
-                                                        name="subject"
+                                                        id="category"
+                                                        name="category"
+                                                        value={category}
+                                                        onChange={(e) => setcategory(e.target.value)}
                                                         className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700"
                                                     >
                                                         <option value="" disabled >Select a category</option>

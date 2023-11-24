@@ -5,14 +5,39 @@ import YourComponent from './layout/Form'
 import ToDoList from './layout/ToDoList'
 import LogIn from './layout/LogIn'
 import { AuthProvider } from './Context'
-
+import { useAuth } from './Context'
+import Logout from './layout/Logout'
 
 function App() {
-
+  const { authToken } = useAuth()
+    const Token = localStorage.getItem("Token")
   const [openmodal, setOpenmodal] = useState(true)
-  return (
-    <>
-      <AuthProvider>
+  const isAuthenticated = !!Token;
+  useEffect(() => {
+    console.log("App")
+    console.log(isAuthenticated)
+    
+  }, [Token])
+
+  
+
+
+  if (isAuthenticated === false) {
+    return (
+      <>
+        <Routes>
+          <Route>
+            <Route path="/" element={<LogIn />} component={""} />
+            <Route path="/signup" element={""} component={""} />
+          </Route>
+        </Routes>
+      </>
+    )
+
+  } else {
+    return (
+      <>
+
         <header>
           <Navbar openmodal={openmodal} setOpenmodal={setOpenmodal}></Navbar>
         </header>
@@ -20,17 +45,18 @@ function App() {
 
         <Routes>
           <Route>
+            <Route path='/logout' element={<Logout/>}/>
             <Route path="/todolist" element={<ToDoList />} component={""} />
             <Route path="/categories" element={""} component={""} />
-            <Route path="/login" element={<LogIn />} component={""} />
-            <Route path="/signup" element={""} component={""} />
             <Route path="/" element={""} component={""} />
           </Route>
         </Routes>
         <Outlet />
-      </AuthProvider>
-    </>
-  )
+
+      </>
+    )
+  }
+
 }
 
 export default App
