@@ -57,7 +57,10 @@ const ToDoDetails = ({ Details, isOpen, setDetails, setIsOpen }) => {
                                     ) : (
                                         <div>{content}</div>
                                     )}
-                                    <div className="mt-2 flex justify-end">
+                                    <div className="mt-4 flex justify-end ">
+                                    <button onClick={handleEdit} className="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                                Add
+                                            </button>
                                         {isEditing ? (
                                             <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
                                                 Save
@@ -67,6 +70,11 @@ const ToDoDetails = ({ Details, isOpen, setDetails, setIsOpen }) => {
                                                 Edit
                                             </button>
                                         )}
+                                          <button onClick={handleEdit} className="bg-red-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                                Delete
+                                            </button>
+                                       
+
                                     </div>
                                 </div>
                                 <Comments comments={Details.comments} />

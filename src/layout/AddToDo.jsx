@@ -47,6 +47,10 @@ const AddToDo = ({ openmodal, setOpenmodal }) => {
         }
 
         setFormToDo(newTask)
+        toast.success("Task added successfully!",
+        {
+          theme: "dark"
+        })
 
      
 
