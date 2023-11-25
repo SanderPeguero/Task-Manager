@@ -95,7 +95,7 @@ const ToDoDetails = ({ Details, isOpen, setDetails, setIsOpen }) => {
                                         )}
                                         {isEditing ? (
                                             <button onClick={handleCancelar} className="bg-red-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
-                                             Cancelar
+                                             Cancel
                                             </button>
 
                                         ) : (
