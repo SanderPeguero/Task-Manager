@@ -1,14 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../Context';
 import { Link } from 'react-router-dom';
+import { toast } from "react-toastify"
 const LogIn = () => {
-    const { login } = useAuth();
+    const { login, IsAuth } = useAuth();
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
 
-    const LogInHandler = (e) => {
+
+    const LogInHandler = async (e) => {
         e.preventDefault();
-        login(email, password)
+       
+        if ([email, password].includes("")) {
+
+            toast.error("All fields are required",
+                {
+                    theme: "dark"
+                }
+            )
+
+            return
+        } else {
+            if (password.length < 8) {
+                localStorage.setItem("auth", false)
+                toast.error("The password must contain 8 characters or more",
+                    {
+                        theme: "dark"
+                    }
+                )
+
+                return
+            } else {
+
+                login(email, password)
+   
+            }
+        }
     }
     return (
         <div className="h-screen bg-gray-100 flex flex-col justify-center sm:py-12">

@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "./firebase/firebase"
 import { Navigate } from "react-router-dom";
 import { Fa500Px } from "react-icons/fa";
+import { toast } from "react-toastify"
 const Context = createContext();
 
 export const useAuth = () => {
@@ -106,42 +107,43 @@ const CategoryList = [
   }
 
 ]
-  const PriorityList = [
-    {
-      id: 1,
-      name: "Heigh",
-      color: '#FFD700'
-    },
-    {
-      id: 2,
-      name: "Medium",
-      color: '#00CED1'
-    },
-    {
-      id: 3,
-      name: "Low",
-      color: '#FF6347'
-    },
-   
+const PriorityList = [
+  {
+    id: 1,
+    name: "Heigh",
+    color: '#FFD700'
+  },
+  {
+    id: 2,
+    name: "Medium",
+    color: '#00CED1'
+  },
+  {
+    id: 3,
+    name: "Low",
+    color: '#FF6347'
+  },
 
-  
-  ]
+
+
+]
 
 
 export function AuthProvider({ children }) {
   const [authToken, setauthToken] = useState()
-    const [ToDo, setToDo] = useState([])
-    const [ToDoEdit, setToDoEdit] = useState({})
-    const [ToDoDeleted, setToDoDeleted] = useState({})
-    const [CategoryPre, setCategoryPre] = useState([])
+  const [IsAuth, setIsAuth] = useState(false)
+  const [ToDo, setToDo] = useState([])
+  const [ToDoEdit, setToDoEdit] = useState({})
+  const [ToDoDeleted, setToDoDeleted] = useState({})
+  const [CategoryPre, setCategoryPre] = useState([])
   //  const [Priority, setPriority] = useState([])
-    useEffect(() => {
-      setToDo(task)
-      setCategoryPre(CategoryList)
-      // setPriority()
-      console.log("App")
-      console.log(ToDo)
-    }, [])
+  useEffect(() => {
+    setToDo(task)
+    setCategoryPre(CategoryList)
+    // setPriority()
+    console.log("App")
+    console.log(ToDo)
+  }, [])
 
   useEffect(() => {
     setToDo(task)
@@ -159,19 +161,31 @@ export function AuthProvider({ children }) {
         console.log(userCredential)
         user.getIdToken().then((value) => {
           setauthToken(value)
-          console.log("Token")
-          console.log(authToken)
           localStorage.setItem("Token", value)
+          toast.success("Session started successfully!",
+            {
+              theme: "dark"
+            })
         })
       })
     } catch (error) {
-
+      toast.error("Invalid email or password",
+        {
+          theme: "dark"
+        }
+      )
     }
   };
 
   useEffect(() => {
 
   }, [authToken])
+
+  useEffect(() => {
+    console.log("Context")
+    console.log(IsAuth)
+  }, [IsAuth])
+
 
 
   const logout = async () => {
@@ -184,7 +198,7 @@ export function AuthProvider({ children }) {
 
   return (
     <Context.Provider
-      value={{ login, logout, authToken, ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre, PriorityList }}
+      value={{ login, logout, IsAuth, authToken, ToDo, setToDo, ToDoEdit, setToDoEdit, ToDoDeleted, setToDoDeleted, CategoryPre, PriorityList }}
     >
       {children}
     </Context.Provider>
