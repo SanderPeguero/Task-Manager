@@ -151,7 +151,7 @@ const ToDoList = () => {
 
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                                             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                <span aria-hidden className={`${task.status == "Pending" ? "absolute inset-0 bg-red-400  rounded-full" : "absolute inset-0 bg-green-400 rounded-full"}`}></span>
+                                                <span aria-hidden className={`${task.status == "Pending" ? "absolute inset-0 bg-red-100  rounded-full" : "absolute inset-0 bg-green-400 rounded-full"}`}></span>
                                                 <span className="relative text-xs">{task.status}</span>
                                             </span>
                                         </td>

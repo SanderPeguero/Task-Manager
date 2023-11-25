@@ -84,7 +84,7 @@ const LogIn = () => {
                     <div className="py-5">
                         <div className="grid grid-cols-2 gap-1">
                         <div className="text-center">
-                        Don't have an account? <Link to="/registro" className="text-sky-600 font-medium hover:underline transition-all">Sign In  </Link>
+                        Don't have an account? <Link to="/signln" className="text-sky-600 font-medium hover:underline transition-all">Sign In  </Link>
                     </div>
                             <div className="text-center sm:text-left whitespace-nowrap">
                                 <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
