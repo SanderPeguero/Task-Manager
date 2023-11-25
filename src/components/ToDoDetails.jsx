@@ -1,15 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Comments from './Comments';
+import { useAuth } from '../Context';
 const ToDoDetails = ({ Details, isOpen, setDetails, setIsOpen }) => {
     const [content, setContent] = useState(Details.notes);
     const [isEditing, setIsEditing] = useState(false);
+    const { ToDo, setToDo, setToDoEdit } = useAuth()
 
     const handleEdit = () => {
+        
         setIsEditing(true);
+
+    };
+    const handleDelet = () => {
+        setContent("")
+        Details.notes = ""
+
+    };
+
+    const handleAdd = () => {
+        setContent("")
+        setIsEditing(true);
+
+    };
+
+    const handleCancelar= () => {
+        setContent(Details.notes)
+        setIsEditing(false);
+
     };
 
     const handleSave = () => {
         setIsEditing(false);
+        Details.notes = content
+
 
     };
 
@@ -57,7 +80,10 @@ const ToDoDetails = ({ Details, isOpen, setDetails, setIsOpen }) => {
                                     ) : (
                                         <div>{content}</div>
                                     )}
-                                    <div className="mt-2 flex justify-end">
+                                    <div className="mt-4 flex justify-end ">
+                                        <button onClick={handleAdd} className="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                            Add
+                                        </button>
                                         {isEditing ? (
                                             <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
                                                 Save
@@ -67,11 +93,24 @@ const ToDoDetails = ({ Details, isOpen, setDetails, setIsOpen }) => {
                                                 Edit
                                             </button>
                                         )}
+                                        {isEditing ? (
+                                            <button onClick={handleCancelar} className="bg-red-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                             Cancelar
+                                            </button>
+
+                                        ) : (
+                                            <button onClick={handleDelet} className="bg-red-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                                Delete
+                                            </button>
+
+                                        )}
+
+
                                     </div>
                                 </div>
                                 <Comments comments={Details.comments} />
                                 <div className="pt-4 flex items-center space-x-4">
-                                    <button className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none" onClick={() => { setIsOpen(true), setDetails([]) }}>
+                                    <button className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none" onClick={() => { setIsOpen(true), setDetails([]), setContent("") }}>
                                         <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg> Cancel
                                     </button>
                                 </div>

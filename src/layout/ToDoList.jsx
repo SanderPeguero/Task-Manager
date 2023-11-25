@@ -16,12 +16,19 @@ const ToDoList = () => {
     const [datos, setDatos] = useState([])
     const [isOpen, setIsOpen] = useState(true);
     const [Details, setDetails] = useState([])
+    useEffect(() => {
+      
+        console.log("aaaaa" , Details)
+      
+    }, [Details])
+    
 
     const EditToDoHandler = (task) => {
-        console.log("Edit")
-        console.log(task)
-        setToDoEdit(task)
-        setOpenmodal(false)
+        // console.log("Edit")
+        // console.log(task)
+        // setToDoEdit(task)
+        // setOpenmodal(false)
+        console.log("aaaapspsps" , Details)
     }
 
     const DeleteToDoHandler = (Id) => {

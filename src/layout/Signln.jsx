@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../Context';
+import { toast } from "react-toastify"
 const Signln = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,12 +18,45 @@ const Signln = () => {
     // };
     const signInHandler = (e) => {
         e.preventDefault();
-        signup(email,password);
-         
-        
-        
+        if (email && password) {
+            if (password.length > 5) {
+                if (password == confirmPassword) {
+                    signup(email, password);
+                    toast.success("Successfully Saved Record",
+                        {
+                            theme: "dark"
+                        }
+                    )
+                } else {
+                    toast.error("Passwords Are Not Equal",
+                        {
+                            theme: "dark"
+                        }
+                    )
+
+                }
+            } else {
+                toast.error("The password length cannot be less than 5",
+                    {
+                        theme: "dark"
+                    }
+                )
+
+            }
+        } else {
+            toast.error("The email or password is empty",
+                {
+                    theme: "dark"
+                }
+            )
+
+        }
+
+
+
+
     };
-    
+
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
@@ -62,7 +96,7 @@ const Signln = () => {
                             type="button"
                             className="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                             onClick={signInHandler}
-                        >   
+                        >
                             <span className="inline-block mr-2">Signln</span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
