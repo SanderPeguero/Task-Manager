@@ -24,10 +24,10 @@ const ToDoList = () => {
     
 
     const EditToDoHandler = (task) => {
-        // console.log("Edit")
-        // console.log(task)
-        // setToDoEdit(task)
-        // setOpenmodal(false)
+        console.log("Edit")
+        console.log(task)
+        setToDoEdit(task)
+        setOpenmodal(false)
         console.log("aaaapspsps" , Details)
     }
 

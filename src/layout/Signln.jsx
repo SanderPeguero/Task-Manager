@@ -21,12 +21,22 @@ const Signln = () => {
         if (email && password) {
             if (password.length > 5) {
                 if (password == confirmPassword) {
-                    signup(email, password);
-                    toast.success("Successfully Saved Record",
+                    if(signup(email, password))
+                    {
+                        toast.success("Successfully Saved Record",
                         {
                             theme: "dark"
                         }
                     )
+
+                    }else{
+                        toast.success("Unable to save data",
+                        {
+                            theme: "dark"
+                        }
+                    )
+                    }
+                    
                 } else {
                     toast.error("Passwords Are Not Equal",
                         {
