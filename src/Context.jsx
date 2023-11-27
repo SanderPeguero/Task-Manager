@@ -163,6 +163,11 @@ export function AuthProvider({ children }) {
           console.log("Token")
           console.log(authToken)
           localStorage.setItem("Token", value)
+          toast.success("Session started successfully!",
+          {
+            theme: "dark"
+          })
+    
         })
       })
     } catch (error) {
