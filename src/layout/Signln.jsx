@@ -1,23 +1,72 @@
 import React, { useState } from 'react';
-
+import { useAuth } from '../Context';
+import { toast } from "react-toastify"
 const Signln = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const { signup } = useAuth();
+    // const handleEmailChange = (e) => {
+    //     setEmail(e.target.value);
+    //     console.log(email)
+    // };
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-        console.log(email)
+    // const handlePasswordChange = (e) => {
+    //     setPassword(e.target.value);
+    //     console.log(password)
+    // };
+    const signInHandler = (e) => {
+        e.preventDefault();
+        if (email && password) {
+            if (password.length > 5) {
+                if (password == confirmPassword) {
+                    if(signup(email, password))
+                    {
+                        toast.success("Successfully Saved Record",
+                        {
+                            theme: "dark"
+                        }
+                    )
+
+                    }else{
+                        toast.success("Unable to save data",
+                        {
+                            theme: "dark"
+                        }
+                    )
+                    }
+                    
+                } else {
+                    toast.error("Passwords Are Not Equal",
+                        {
+                            theme: "dark"
+                        }
+                    )
+
+                }
+            } else {
+                toast.error("The password length cannot be less than 5",
+                    {
+                        theme: "dark"
+                    }
+                )
+
+            }
+        } else {
+            toast.error("The email or password is empty",
+                {
+                    theme: "dark"
+                }
+            )
+
+        }
+
+
+
+
     };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-        console.log(password)
-    };
-    const signInHandler = () => {
-        
-    };
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
@@ -36,14 +85,14 @@ const Signln = () => {
                         <input
                             type="text"
                             value={email}
-                            onChange={handleEmailChange}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                         />
                         <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
                         <input
                             type="password"
                             value={password}
-                            onChange={handlePasswordChange}
+                            onChange={(e) => setPassword(e.target.value)}
                             className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                         />
                         <label className="font-semibold text-sm text-gray-600 pb-1 block">Confirm Password</label>
@@ -57,7 +106,7 @@ const Signln = () => {
                             type="button"
                             className="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                             onClick={signInHandler}
-                        >   
+                        >
                             <span className="inline-block mr-2">Signln</span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

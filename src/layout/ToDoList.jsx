@@ -16,12 +16,19 @@ const ToDoList = () => {
     const [datos, setDatos] = useState([])
     const [isOpen, setIsOpen] = useState(true);
     const [Details, setDetails] = useState([])
+    useEffect(() => {
+      
+        console.log("aaaaa" , Details)
+      
+    }, [Details])
+    
 
     const EditToDoHandler = (task) => {
         console.log("Edit")
         console.log(task)
         setToDoEdit(task)
         setOpenmodal(false)
+        console.log("aaaapspsps" , Details)
     }
 
     const DeleteToDoHandler = (Id) => {
@@ -70,7 +77,7 @@ const ToDoList = () => {
 
             <ToDoItem datos={datos} openmodal={openmodal2} setOpenmodal={setOpenmodal2}></ToDoItem>
 
-            <ToDoDetails Details={Details} isOpen={isOpen} setIsOpen={setIsOpen} setDetails={setDetails}/>
+            <ToDoDetails Details={Details} isOpen={isOpen} setIsOpen={setIsOpen} setDetails={setDetails} />
 
 
 
@@ -119,12 +126,12 @@ const ToDoList = () => {
                             </thead>
 
                             <tbody className="bg-white">
-                                {sortedTasks.map((task, index) => (
+                                {ToDo.map((task, index) => (
                                     <tr key={index}>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                                             <div className="flex items-center">
                                                 <div>
-                                                    <div className="text-sm leading-5 text-gray-800">#{task.id}</div>
+                                                    <div className="text-sm leading-5 text-gray-800">{task.id}</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -133,20 +140,22 @@ const ToDoList = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.description}</td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.category}</td>
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
+                                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                                             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                                 <span aria-hidden className={` ${getColorByPriority(task.priority)}`}></span>
                                                 <span className="relative text-xs">{task.priority}</span>
                                             </span>
                                         </td>
+
                                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{task.expirationdate}</td>
 
-                                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
+                                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                                             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                <span aria-hidden className={`${task.status == "Pending" ? "absolute inset-0 bg-red-400  rounded-full" : "absolute inset-0 bg-green-400 rounded-full"}`}></span>
+                                                <span aria-hidden className={`${task.status == "Pending" ? "absolute inset-0 bg-red-100  rounded-full" : "absolute inset-0 bg-green-400 rounded-full"}`}></span>
                                                 <span className="relative text-xs">{task.status}</span>
                                             </span>
                                         </td>
+
 
 
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">
