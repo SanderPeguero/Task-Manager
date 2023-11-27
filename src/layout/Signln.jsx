@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../Context';
 import { toast } from "react-toastify"
+import { Link } from 'react-router-dom';
 const Signln = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -21,22 +22,21 @@ const Signln = () => {
         if (email && password) {
             if (password.length > 5) {
                 if (password == confirmPassword) {
-                    if(signup(email, password))
-                    {
+                    if (signup(email, password)) {
                         toast.success("Successfully Saved Record",
-                        {
-                            theme: "dark"
-                        }
-                    )
+                            {
+                                theme: "dark"
+                            }
+                        )
 
-                    }else{
+                    } else {
                         toast.success("Unable to save data",
-                        {
-                            theme: "dark"
-                        }
-                    )
+                            {
+                                theme: "dark"
+                            }
+                        )
                     }
-                    
+
                 } else {
                     toast.error("Passwords Are Not Equal",
                         {
@@ -120,6 +120,14 @@ const Signln = () => {
                         </button>
                     </div>
                     <div className="py-5">
+                    <div className="py-8">
+                        <div className="">
+                            <div className="text-center">
+                            Do you already have an account?{""} <Link to="/" className="text-sky-600 font-medium hover:underline transition-all">Log In  </Link>
+                            </div>
+                        </div>
+                    </div>
+                     
                         {/* <div className="grid grid-cols-2 gap-1">
                             <div className="text-center sm:text-left whitespace-nowrap">
                                 <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
